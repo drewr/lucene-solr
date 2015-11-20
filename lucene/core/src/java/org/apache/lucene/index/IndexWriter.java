@@ -418,7 +418,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
     boolean success2 = false;
     try {
       boolean success = false;
-      synchronized (fullFlushLock) {
+      /// TEST /// synchronized (fullFlushLock) {
         try {
           anyChanges = docWriter.flushAllThreads();
           if (!anyChanges) {
@@ -449,7 +449,7 @@ public class IndexWriter implements Closeable, TwoPhaseCommit, Accountable {
             }
           }
         }
-      }
+        /// TEST /// }
       if (anyChanges) {
         maybeMerge(config.getMergePolicy(), MergeTrigger.FULL_FLUSH, UNBOUNDED_MAX_MERGE_SEGMENTS);
       }
